@@ -11,3 +11,14 @@ The test data are available here:
 https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
 
 The data for this project come from this source: http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har.
+
+LOADING THE DATA
+
+> training<-read.csv("training.csv",sep="'",header=TRUE,na.strings=c("NA","",'#DIV/0!'))
+
+> testing <- read.csv("testing.csv", sep=",", header=TRUE, na.strings = c("NA","",'#DIV/0!'))
+
+To find the dimension of the data,
+
+>dim(training)
+>dim(testing)
