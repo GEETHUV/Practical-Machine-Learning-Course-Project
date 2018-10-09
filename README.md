@@ -12,7 +12,7 @@ https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
 
 The data for this project come from this source: http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har.
 
-LOADING THE DATA
+# LOADING THE DATA
 
 > training<-read.csv("training.csv",sep="'",header=TRUE,na.strings=c("NA","",'#DIV/0!'))
 
@@ -57,10 +57,14 @@ Now we have to do the same on the test data set
 After the cleaning process, the new training data set has only 53 columns.
 
 # Summary of the data
+
+The summary of the data after the cleaning process can be obtained by using the str() function as follows.
             
 > str(TestDataClean)
 
 > str(TrainDataClean)
+
+Now,if we want to know the variables in the dataset,we can run the following code.
 
 > names(TrainDataClean)
 
@@ -86,12 +90,9 @@ Call:
 
  randomForest(formula = classe ~ ., data = sub_train) 
  
-               Type of random forest: classification
-                     Number of trees: 500
-                     
+               
 No. of variables tried at each split: 7
 
-        OOB estimate of  error rate: 0.63%
         
 Confusion matrix:
 
