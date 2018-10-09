@@ -1,4 +1,4 @@
-Practical-Machine-Learning-Course-Project
+# Practical-Machine-Learning-Course-Project
 
 Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. In this project, your goal will be to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website here: http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har (see the section on the Weight Lifting Exercise Dataset). 
 Data
@@ -14,7 +14,7 @@ https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
 
 The data for this project come from this source: http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har.
 
-REQUIRED R PACKAGES
+# Required R packages
 
 library(caret)
 
@@ -25,7 +25,7 @@ library(randomForest)
 library(rpart)
 
 
-LOADING THE DATA
+# Loading the data
 
 training<-read.csv("training.csv",sep="'",header=TRUE,na.strings=c("NA","",'#DIV/0!'))
 
@@ -36,3 +36,68 @@ To find the dimension of the data,
 dim(training) 
 
 dim(testing)
+
+# Summary of the data
+
+The summary of the data after the cleaning process can be obtained by using the str() function as follows.
+
+str(TestDataClean)
+
+str(TrainDataClean)
+
+Now,if we want to know the variables in the dataset,we can run the following code.
+
+names(TrainDataClean)
+
+names(TestDataClean)
+
+# Data processing
+
+partition <- createDataPartition(TrainDataClean$classe, p = 0.6, list = FALSE)
+
+sub_train <- TrainDataClean[partition,]
+
+sub_test <- TrainDataClean[-partition,]
+
+set.seed(18)
+
+Now we have to do algorithms in machine learning.
+
+mod_rf<-randomForest(formula = classe ~ ., data = sub_train)
+
+mod_rf
+
+Call:
+
+randomForest(formula = classe ~ ., data = sub_train)
+
+No. of variables tried at each split: 7
+
+Confusion matrix:
+
+ A    B    C    D    E class.error
+A 3343 5 0 0 0 0.001493429
+
+B 16 2259 4 0 0 0.008775779
+
+C 0 19 2031 4 0 0.011197663
+
+D 0 0 20 1910 0 0.010362694
+
+E 0 0 2 4 2159 0.002771363
+
+# Prediction
+
+prediction <- predict(mod_rf, testing, type = "class")
+
+prediction
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+
+B A B A A E D B A A B C B A E E A B
+
+19 20
+
+B B
+
+Levels: A B C D E
