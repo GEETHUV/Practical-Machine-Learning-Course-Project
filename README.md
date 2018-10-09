@@ -21,13 +21,15 @@ LOADING THE DATA
 To find the dimension of the data,
 
 > dim(training)
+
 [1] 19622     160
+
 > dim(testing)
+
 [1]  20 160
 
-
-  
  The training data set is made of 19622 observations on 160 columns. We can see that many columns have NA values on almost every observation. So we have to remove them, because they will not produce any information. The first seven columns give information about the people who did the test, and also timestamps. We will not take them in our model.
+ 
  # Data cleaning
  
 > indColToRemove <- which(colSums(is.na(training) |training=="")>0.9*dim(training)[1])
@@ -111,12 +113,12 @@ E    0    0    2    4 2159 0.002771363
 
 > prediction
 
- 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 
+ 1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18 
  
- B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B 
+ B   A   B   A   A   E   D   B   A   A   B   C   B   A   E   E   A   B 
  
-19 20 
+19  20 
 
- B  B 
+ B   B 
  
 Levels: A B C D E
