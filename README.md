@@ -28,7 +28,7 @@ To find the dimension of the data,
 
   
  The training data set is made of 19622 observations on 160 columns. We can see that many columns have NA values on almost every observation. So we have to remove them, because they will not produce any information. The first seven columns give information about the people who did the test, and also timestamps. We will not take them in our model.
- # DATA CLEANING
+ # Data cleaning
  
 > indColToRemove <- which(colSums(is.na(training) |training=="")>0.9*dim(training)[1])
 
@@ -63,3 +63,57 @@ After the cleaning process, the new training data set has only 53 columns.
 > names(TrainDataClean)
 
 > names(TestDataClean)
+
+# Data processing
+
+> partition <- createDataPartition(TrainDataClean$classe, p = 0.6, list = FALSE)
+
+> sub_train <- TrainDataClean[partition,]
+
+> sub_test <- TrainDataClean[-partition,]
+
+> set.seed(18)
+
+Now we have to do algorithms in machine learning.
+
+> mod_rf<-randomForest(formula = classe ~ ., data = sub_train)
+
+> mod_rf
+
+Call:
+
+ randomForest(formula = classe ~ ., data = sub_train) 
+ 
+               Type of random forest: classification
+                     Number of trees: 500
+                     
+No. of variables tried at each split: 7
+
+        OOB estimate of  error rate: 0.63%
+        
+Confusion matrix:
+
+     A    B    C    D    E class.error
+     
+A 3343    5    0    0    0 0.001493429
+
+B   16 2259    4    0    0 0.008775779
+
+C    0   19 2031    4    0 0.011197663
+
+D    0    0   20 1910    0 0.010362694
+
+E    0    0    2    4 2159 0.002771363
+
+# Prediction
+
+> prediction <- predict(mod_rf, testing, type = "class")
+
+> prediction
+
+ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 
+ B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B 
+19 20 
+ B  B 
+ 
+Levels: A B C D E
