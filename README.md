@@ -112,8 +112,11 @@ E    0    0    2    4 2159 0.002771363
 > prediction
 
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 
+ 
  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B 
+ 
 19 20 
+
  B  B 
  
 Levels: A B C D E
