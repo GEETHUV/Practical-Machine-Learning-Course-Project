@@ -245,19 +245,19 @@ To find the dimension of the data,
 
 > dim(TrainDataClean)
 
-## [1] 19622    53
+ [1] 19622    53
 
 Now we have to do the same on the test data set
 
-> indColToRemove <- which(colSums(is.na(testing) |testing=="")>0.9*dim(testing)[1])
+# > indColToRemove <- which(colSums(is.na(testing) |testing=="")>0.9*dim(testing)[1])
 
-> TestDataClean <- testing[,-indColToRemove]
+# > TestDataClean <- testing[,-indColToRemove]
 
-> TestDataClean <- TestDataClean[,-1]
+# > TestDataClean <- TestDataClean[,-1]
 
-> dim(TestDataClean)
+# > dim(TestDataClean)
 
-## [1] 20 59
+ [1] 20 59
 
 After the cleaning process, the new training data set has only 53 columns.
 
