@@ -21,4 +21,5 @@ LOADING THE DATA
 To find the dimension of the data,
 
 >dim(training)
+
 >dim(testing)
