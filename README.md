@@ -20,68 +20,15 @@ LOADING THE DATA
 
 To find the dimension of the data,
 
->dim(training)
-
->dim(testing)
-
-SUMMARY OF THE DATA
->str(training)
-
-
-R version 3.5.1 (2018-07-02) -- "Feather Spray"
-Copyright (C) 2018 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
-
-  Natural language support but running in an English locale
-
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
-
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-
-During startup - Warning messages:
-1: Setting LC_CTYPE failed, using "C" 
-2: Setting LC_COLLATE failed, using "C" 
-3: Setting LC_TIME failed, using "C" 
-4: Setting LC_MESSAGES failed, using "C" 
-5: Setting LC_MONETARY failed, using "C" 
-[Workspace loaded from ~/.RData]
-
-> setwd("~/Downloads")
-> 
-> 
-> training<-read.csv("training.csv",sep="'",header=TRUE,na.strings=c("NA","",'#DIV/0!'))
-> testing <- read.csv("testing.csv", sep=",", header=TRUE, na.strings = c("NA","",'#DIV/0!'))
 > dim(training)
-[1] 19622     1
+[1] 19622     160
 > dim(testing)
 [1]  20 160
-> 
-> 
-> 
-> 
-> training<-read.csv("training.csv",sep="'",header=TRUE,na.strings=c("NA","",'#DIV/0!'))
-> dim(training)
-[1] 19622     1
-> library(caret)
-Loading required package: lattice
-Loading required package: ggplot2
-> library(lattice)
-> library(ggplot2)
-> library(caret)
-> library(rattle)
-Error in library(rattle) : there is no package called 'rattle'
-> training <- read.csv(url("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"),header=TRUE)
-> dim(training)
-[1] 19622   160
-> str(training)
+
+SUMMARY OF THE DATA
+
+>str(training)
+
 
 'data.frame':	19622 obs. of  160 variables:
 
